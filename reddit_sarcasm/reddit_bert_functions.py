@@ -43,7 +43,9 @@ class Reddit(Dataset):
     
 
 def split_reddit_data(csv_path):
-    
+    """
+        Reads in reddit data from .csv and performs a stratified split into training-validation-testing sets   
+    """
     #read in .csv
     data_all = None
     try:
@@ -52,6 +54,7 @@ def split_reddit_data(csv_path):
         print('Data csv not found')
         return
     
+    #some NA in data (see data EDA file)
     data_all.dropna(subset=['comment'], inplace=True)
     
     x_train, x_testval, y_train, y_testval= train_test_split(data_all['comment'], data_all['label'], random_state=200, 
@@ -97,6 +100,7 @@ def validate_reddit(sarcasm_model, validationloader, loss_function, device):
         loss = loss_function(preds,labels)
         valid_loss_total += loss.item()
         
+        #Turn sigmoid values into labels
         preds[preds<0.5] = 0
         preds[preds >=0.5] = 1
         
@@ -179,7 +183,8 @@ def train_reddit(sarcasm_model, trainloader, validationloader, epochs, batch_siz
             if scheduler:
                 lr_sched.step()
                 lrs.append(optimizer.param_groups[0]["lr"])
-                
+
+            #Turn sigmoid values into labels 
             output[output<0.5] = 0
             output[output>=0.5] = 1
             train_correct += (output == labels).float().sum().item()
@@ -194,8 +199,6 @@ def train_reddit(sarcasm_model, trainloader, validationloader, epochs, batch_siz
         
         #AT THE END OF EACH EPOCH
         
-        #print("Current learning rate: {}".format(lrs[-1]))
-        
         #validate and get accuracies
         losses.append(curr_loss)
         
@@ -209,7 +212,7 @@ def train_reddit(sarcasm_model, trainloader, validationloader, epochs, batch_siz
 
                 if es_counter >= patience:
                     print("Early stopping triggered. Ending training..")
-                    return
+                    return losses, val_losses
                 else:
                     print(f"No decrease in validation loss! {patience-es_counter} more consecutive loss increase(s) until early stop.")
 
@@ -230,8 +233,7 @@ def train_reddit(sarcasm_model, trainloader, validationloader, epochs, batch_siz
     
                 print("Model checkpoint saved to " + model_save_dir)
                 
-            
-        
+        #print status
         print("Epoch {}. Training accuracy: {}. Validation accuracy: {}.".format(epoch, training_acc, validation_acc))
         print()
     
