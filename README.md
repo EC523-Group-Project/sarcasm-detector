@@ -14,7 +14,7 @@ By: Nanna Hannesdottir, Kevin Vogt-Lowell, Cole Hunter
  
 Additionally we used multiple methods from the Huggingface transformers library, installations included in notebooks.
 
-## 1. Datasets
+## Datasets
 
 We used the following two datasets in our experimentation, both available on Kaggle.
 
@@ -25,7 +25,7 @@ The News Headlines dataset can also be found on this under the data/ folder. The
 
 Under data/ you can furthermore find a notebook with our preliminary inspections of the datasets. This notebook is exploratory only and not required to replicate the results.
 
-## 2. reddit_sarcasm/ folder: Reddit models and training
+## reddit_sarcasm/ folder: Reddit models and training
 
 ### BERT with basic linear head
   - Main script for training and testing: basic_BERT_reddit.ipynb 
@@ -34,7 +34,7 @@ Under data/ you can furthermore find a notebook with our preliminary inspections
 ### BERT with multi-attention head
   -TODO: insert!!!!
 
-## 3. headlines_sarcasm/folder: Headlines models and training
+## headlines_sarcasm/folder: Headlines models and training
 
 ### BERT with basic linear head
    -TODO: insert!!!!
