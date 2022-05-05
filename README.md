@@ -22,14 +22,12 @@ Additionally we used multiple methods from the Huggingface transformers library,
 
 We used the following two datasets in our experimentation, both available on Kaggle.
 
-1. SARC Reddit data: https://www.kaggle.com/datasets/danofer/sarcasm
+1. SARC Reddit data: https://www.kaggle.com/datasets/danofer/sarcasm**
 2. News Headlines data: https://www.kaggle.com/datasets/rmisra/news-headlines-dataset-for-sarcasm-detection
 
 The News Headlines dataset can also be found on this under the data/ folder. The Reddit data is too big to upload to Github directly.
 
 Under data/ you can furthermore find a notebook with our preliminary inspections of the datasets. This notebook is exploratory only and not required to replicate the results.
-
-NOTE: For reddit, we exclusively used train-balanced-sarcasm.csv as our data. The Reddit dataset is split into training and testing sets, so we had planned on using the data splits as provided. However, a more in-depth analysis of the dataset and its splits revealed that the data contained within the test set seemed to bear no relation in context or format to the data present in the training set. To resolve the issue, we decided that, given the massive size of the dataset, we would simply treat the training set as our main Reddit dataset and then create our training, testing, and validation splits from this newly defined set. Judging by notebooks available on Kaggle, other researchers who used this dataset frequently replicated this approach.
 
 ## 2. reddit_sarcasm/ folder: Reddit models and training
 
@@ -47,4 +45,4 @@ NOTE: For reddit, we exclusively used train-balanced-sarcasm.csv as our data. Th
 ### BERT with multi-attention head
    -TODO: insert!!!!
 
-
+**NOTE: For reddit, we exclusively used train-balanced-sarcasm.csv as our data. The Reddit dataset is split into training and testing sets, so we had planned on using the data splits as provided. However, a more in-depth analysis of the dataset and its splits revealed that the data contained within the test set seemed to bear no relation in context or format to the data present in the training set. To resolve the issue, we decided that, given the massive size of the dataset, we would simply treat the training set as our main Reddit dataset and then create our training, testing, and validation splits from this newly defined set. Judging by notebooks available on Kaggle, other researchers who used this dataset frequently replicated this approach.
