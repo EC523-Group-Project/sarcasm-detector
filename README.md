@@ -4,10 +4,6 @@ Implementation of a sarcasm detection model using deep learning with BERT to det
 By: Nanna Hannesdottir, Kevin Vogt-Lowell, Cole Hunter
 
 # File Setup and How to Run
-The contents of the repository can be roughly divided into 3 sections: 
-1. Data 
-2. Our models and experimentation for the Reddit dataset and 
-3. Our models and experimentation for the Headlines dataset.
 
 ### Installations and Libraries neededed
   - PyTorch 1.11
